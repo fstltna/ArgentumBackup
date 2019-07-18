@@ -1,13 +1,13 @@
 #!/usr/bin/perl
 
 # Set these for your situation
-my $SYNCDIR = "/sbbs";
+my $SYNCDIR = "/root/anura";
 my $BACKUPDIR = "/root/backups";
 my $TARCMD = "/bin/tar czf";
 my $VERSION = "1.0";
 
 # Init file data
-my $MySettings = "$ENV{'HOME'}/.sbackuprc";
+my $MySettings = "$ENV{'HOME'}/.argbackuprc";
 my $BACKUPUSER = "";
 my $BACKUPPASS = "";
 my $BACKUPSERVER = "";
@@ -79,7 +79,7 @@ sub PrintDebugCommand
 
 ReadConfigFile();
 
-print "SyncBackup - back up your Synchronet BBS - version $VERSION\n";
+print "ArgentumBackup - back up your Argentum Age server - version $VERSION\n";
 print "======================================================\n";
 
 if (! -d $BACKUPDIR)
@@ -91,32 +91,32 @@ print "Moving existing backups: ";
 
 if (-f "$BACKUPDIR/citbackup-5.tgz")
 {
-	unlink("$BACKUPDIR/syncbackup-5.tgz")  or warn "Could not unlink $BACKUPDIR/syncbackup-5.tgz: $!";
+	unlink("$BACKUPDIR/argentumbackup-5.tgz")  or warn "Could not unlink $BACKUPDIR/argentumbackup-5.tgz: $!";
 }
-if (-f "$BACKUPDIR/syncbackup-4.tgz")
+if (-f "$BACKUPDIR/argentumbackup-4.tgz")
 {
-	rename("$BACKUPDIR/syncbackup-4.tgz", "$BACKUPDIR/syncbackup-5.tgz");
+	rename("$BACKUPDIR/argentumbackup-4.tgz", "$BACKUPDIR/argentumbackup-5.tgz");
 }
-if (-f "$BACKUPDIR/syncbackup-3.tgz")
+if (-f "$BACKUPDIR/argentumbackup-3.tgz")
 {
-	rename("$BACKUPDIR/syncbackup-3.tgz", "$BACKUPDIR/syncbackup-4.tgz");
+	rename("$BACKUPDIR/argentumbackup-3.tgz", "$BACKUPDIR/argentumbackup-4.tgz");
 }
-if (-f "$BACKUPDIR/syncbackup-2.tgz")
+if (-f "$BACKUPDIR/argentumbackup-2.tgz")
 {
-	rename("$BACKUPDIR/syncbackup-2.tgz", "$BACKUPDIR/syncbackup-3.tgz");
+	rename("$BACKUPDIR/argentumbackup-2.tgz", "$BACKUPDIR/argentumbackup-3.tgz");
 }
-if (-f "$BACKUPDIR/syncbackup-1.tgz")
+if (-f "$BACKUPDIR/argentumbackup-1.tgz")
 {
-	rename("$BACKUPDIR/syncbackup-1.tgz", "$BACKUPDIR/syncbackup-2.tgz");
+	rename("$BACKUPDIR/argentumbackup-1.tgz", "$BACKUPDIR/argentumbackup-2.tgz");
 }
 print "Done\nCreating Backup: ";
-system("$TARCMD $BACKUPDIR/syncbackup-1.tgz $SYNCDIR --exclude='/sbbs/ctrl/localspy*.sock' --exclude='/sbbs/ctrl/status.sock'");
+system("$TARCMD $BACKUPDIR/argentumbackup-1.tgz $SYNCDIR --exclude='/sbbs/ctrl/localspy*.sock' --exclude='/sbbs/ctrl/status.sock'");
 if ($BACKUPSERVER ne "")
 {
 	print "Offsite backup requested\n";
-	print "Copying $BACKUPDIR/syncbackup-1.tgz to $BACKUPSERVER:$BACKUPPORT\n";
-	PrintDebugCommand("rsync -avz -e ssh $BACKUPDIR/syncbackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH\n");
-	system ("rsync -avz -e ssh $BACKUPDIR/syncbackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH");
+	print "Copying $BACKUPDIR/argentumbackup-1.tgz to $BACKUPSERVER:$BACKUPPORT\n";
+	PrintDebugCommand("rsync -avz -e ssh $BACKUPDIR/argentumbackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH\n");
+	system ("rsync -avz -e ssh $BACKUPDIR/argentumbackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH");
 }
 
 print("Done!\n");
