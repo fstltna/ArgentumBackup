@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # Set these for your situation
-my $SYNCDIR = "/home/argentumowner/argentum-age/anura";
+my $SYNCDIR = "/home/argentumowner/argentum-age";
 my $BACKUPDIR = "/home/argentumowner/backups";
 my $TARCMD = "/bin/tar czf";
 my $VERSION = "1.1";
