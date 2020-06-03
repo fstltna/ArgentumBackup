@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
 # Set these for your situation
-my $SYNCDIR = "/root/anura";
-my $BACKUPDIR = "/root/backups";
+my $SYNCDIR = "/home/argentumowner/argentum-age/anura";
+my $BACKUPDIR = "/home/argentumowner/backups";
 my $TARCMD = "/bin/tar czf";
-my $VERSION = "1.0";
+my $VERSION = "1.1";
 
 # Init file data
 my $MySettings = "$ENV{'HOME'}/.argbackuprc";

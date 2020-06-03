@@ -1,4 +1,4 @@
-# ArgentumBackup - backup script for the Argentum Age Card Game (1.0)
+# ArgentumBackup - backup script for the Argentum Age Card Game (1.1)
 Creates a hot backup of your Argentum Ages installation and optionally copies it to a offsite server.
 
 Official support sites: [Official Github Repo](https://github.com/fstltna/ArgentumBackup) - [Official Forum](https://argentumage.gameplayer.club/index.php/forum/argentum-age-utilities)
@@ -12,7 +12,7 @@ Official support sites: [Official Github Repo](https://github.com/fstltna/Argent
 5. After the first run edit the ~/.argbackuprc and change your settings if you want to use the offsite backup feature. The next run it should save to your remote host.
 6. create a cron job like this:
 
-        1 1 * * * /root/ArgentumBackup/argentumbackup.pl
+        1 1 * * * /home/argentumowner/ArgentumBackup/argentumbackup.pl
 
 7. This will back up your Argentum installation at 1:01am each day, and keep the last 5 backups.
 
